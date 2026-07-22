@@ -41,20 +41,6 @@ vj@gauss-labs:~$ ls -la ~/stack
 ![Git](https://img.shields.io/badge/Git-1a1a1a?style=flat-square&logo=git&logoColor=f05032)
 ![Linux](https://img.shields.io/badge/Linux-1a1a1a?style=flat-square&logo=linux&logoColor=fcc624)
 
-```bash
-vj@gauss-labs:~$ cat ~/.workflow
-```
-
-```text
-› test-first        write the failing test, then earn the green
-› worktrees         one branch, one directory, zero stashing
-› poetry-only       reproducible env or it didn't happen
-› small diffs       surgical changes, review-friendly PRs
-```
-
-```bash
-vj@gauss-labs:~$ git log --stat --author=vj
-```
 
 <p align="left">
   <img height="165" src="https://github-readme-stats.vercel.app/api?username=gli-vijay-lingesh&show_icons=true&hide_border=true&theme=dark&icon_color=05998b&title_color=05998b&count_private=true" />
