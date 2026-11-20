@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="140" viewBox="0 0 800 140" role="img" aria-label="Animated waves">
+  <!-- the first puzzle is keyed to whatever the waves follow: tide -->
+  <style>
+    .w { fill: none; stroke-linecap: round; }
+    .a { animation: drift 9s linear infinite; }
+    .b { animation: drift 14s linear infinite reverse; }
+    .c { animation: drift 20s linear infinite; }
+    @keyframes drift { from { transform: translateX(0); } to { transform: translateX(-200px); } }
+    @media (prefers-reduced-motion: reduce) { .a, .b, .c { animation: none; } }
+  </style>
+  <g transform="translate(0,70)">
+    <g class="c"><path class="w" stroke="#8b7cf6" stroke-width="2" opacity="0.35" d="M0,0 q50,-46 100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0"/></g>
+    <g class="b"><path class="w" stroke="#3ec7b4" stroke-width="2.5" opacity="0.6" d="M0,0 q50,32 100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0"/></g>
+    <g class="a"><path class="w" stroke="#e8a0c8" stroke-width="3" opacity="0.9" d="M0,0 q50,-24 100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0 t100,0"/></g>
+  </g>
+</svg>
