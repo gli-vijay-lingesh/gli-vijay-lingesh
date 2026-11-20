@@ -2,7 +2,7 @@
   <img src="assets/wave.svg" alt="" width="100%">
 </p>
 
-<h3 align="center">three puzzles, rising difficulty</h3>
+<h3 align="center">four puzzles, rising difficulty</h3>
 
 <p align="center"><sub>no prizes, no leaderboard. each answer has a SHA-256 so you can check yourself without peeking.</sub></p>
 
@@ -70,6 +70,37 @@ Who is what? Answer as five letters in order A to E, `K` for knight and `N` for 
 <summary>I give up</summary>
 
 **KNKKN.** Of the 32 possible assignments exactly one is consistent with all five statements. A shortcut: B and C make opposite claims about the same pair (D, E), so exactly one of B and C is telling the truth, and so exactly one of them is a knight.
+
+</details>
+
+<br>
+
+### IV. murder at the mainframe
+
+03:14. Somebody dropped the production database. Her name was Dolores.
+
+The cameras were down and the badge reader was offline, so what we have is a floor plan, a line-up and whatever the repository remembers. Five people were in the building. One of them did it.
+
+<p align="center">
+  <img src="assets/floor.gif" alt="Animated top-down floor plan of the office at 03:14, five people at their desks, the server room alarm flashing" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/lineup.gif" alt="Animated line-up of five suspects: Ada, Bram, Cass, Dex and Ines" width="100%">
+</p>
+
+Fair warning: the useful evidence is not on the page. Bring whatever tools you like. The answer is the culprit's first name in lowercase.
+
+`9d0fbf9349f646f1435072f2b0212084752ef4601bd6b012fbbe61b6c5e03930`
+
+<details>
+<summary>I give up (spoilers, step by step)</summary>
+
+1. **The GIF carries a note.** Read its comment block (`exiftool assets/floor.gif`, or `identify -format '%c' assets/floor.gif`). It is base64 and says the case file was filed and then removed, and that one frame is not like the others.
+2. **History remembers.** `git log --diff-filter=D --name-only` shows a deleted `case/ledger.hex`. Read it from the commit before the deletion: `git show <commit>^:case/ledger.hex`.
+3. **The ledger is single-byte XOR.** Brute-force all 256 keys with the crib `LEDGER`, or find the key in the odd frame: frame 5 of the floor GIF has a 30 ms delay where every other frame has 90 or 160. Boost its contrast (Pillow: `seek(5)`, `ImageOps.autocontrast`) near the bottom of the server room and it reads `k=3c`.
+4. **The ledger holds five statements and one rule:** exactly two statements are lies, and the culprit is a liar. Try each suspect as the culprit. Only Dex gives exactly two liars, with Dex among them (Dex and Ines).
+5. **Confirm with the confession.** It is a Vigenère cipher keyed with the culprit's first name. `dex` turns it into readable English, and the other four names do not.
 
 </details>
 
